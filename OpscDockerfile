@@ -1,0 +1,16 @@
+FROM nimmis/java-centos:oracle-8-jdk
+
+# Upgrading system
+RUN yum -y upgrade
+# RUN yum -y install wget
+
+COPY datastax.repo /etc/yum.repos.d/
+RUN rpm --import https://rpm.datastax.com/rpm/repo_key
+RUN yum -y  update && \
+    yum -y  install opscenter
+# Agent and web ui
+EXPOSE 8888 50031 61620
+# ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/usr/share/opscenter/bin/opscenter"]
+CMD ["-f"]
+
