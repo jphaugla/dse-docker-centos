@@ -1,5 +1,7 @@
 # Docker for Centos Package Install Testing
 
+much of this is shamelessly stolen from Luke Tillman including the entrypoint.sh and this README!
+
 ## Usage
 
 > **Note:** Not meant for production use. See [this whitepaper on DataStax.com][whitepaper] for 
