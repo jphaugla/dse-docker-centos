@@ -1,1 +1,1 @@
-docker build . -t dsecentos 
+docker build . -t dsecentos -f Dockerfile
