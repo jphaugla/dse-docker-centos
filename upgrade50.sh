@@ -1,0 +1,1 @@
+docker exec $1 bash -c 'yum -y install dse-full-5.0.9-1 dse-5.0.9-1 dse-libsolr-5.0.9-1 dse-libtomcat-5.0.9-1 dse-liblog4j-5.0.9-1 dse-libcassandra-5.0.9-1 dse-libspark-5.0.9-1 dse-libgraph-5.0.9-1 dse-libhadoop2-client-native-5.0.9-1 dse-libhadoop2-client-5.0.9-1 dse-demos-5.0.9-1'

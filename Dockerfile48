@@ -24,7 +24,9 @@ VOLUME /var/lib/cassandra /var/lib/spark /var/lib/dsefs /var/log/cassandra /var/
 # Volume for configuration files in resources
 VOLUME /etc/dse
 
-#  Volume for doing an upgrade
+# Volume for doing upgrades
+VOLUME /usr
+ 
 
 # Cassandra
 EXPOSE 7000 9042 9160
