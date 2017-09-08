@@ -9,7 +9,7 @@ RUN rpm --import https://rpm.datastax.com/rpm/repo_key && \
     chmod +x /usr/local/bin/gosu
     
 RUN yum -y  update && \
-    yum -y  install dse-full-4.8.13-1 && \
+    yum -y  install dse-full-5.1.2-1 && \
     yum -y  install dse-demos && \
     yum -y  install datastax-agent 
 

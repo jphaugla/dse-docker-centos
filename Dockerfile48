@@ -10,8 +10,13 @@ RUN rpm --import https://rpm.datastax.com/rpm/repo_key && \
     
 RUN yum -y  update && \
     yum -y  install dse-full-4.8.13-1 && \
-    yum -y  install dse-demos && \
     yum -y  install datastax-agent 
+
+
+# Entrypoint script for launching
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT [ "/entrypoint.sh" ]
 
 # Volumes for Cassandra and Spark data
 VOLUME /var/lib/cassandra /var/lib/spark /var/lib/dsefs /var/log/cassandra /var/log/spark
@@ -19,10 +24,7 @@ VOLUME /var/lib/cassandra /var/lib/spark /var/lib/dsefs /var/log/cassandra /var/
 # Volume for configuration files in resources
 VOLUME /etc/dse
 
-# Entrypoint script for launching
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT [ "/entrypoint.sh" ]
+#  Volume for doing an upgrade
 
 # Cassandra
 EXPOSE 7000 9042 9160
