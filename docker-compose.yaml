@@ -1,0 +1,24 @@
+version: '2'
+
+# Our external network named 'graph'
+networks:
+  graph:
+    external: true
+
+services:
+  # One DSE node
+  dse:
+    image: dsecent50
+    ports:
+    # The Cassandra port exposed to our host
+    - "9042:9042"
+    # Tell DSE to start a graph node if put -g inside of this
+    command: [  ]
+    cap_add:
+    - IPC_LOCK
+    ulimits:
+      memlock: -1
+    networks:
+    - graph
+    # Specify the container name explicitly to avoid getting underscores
+    container_name: dse
