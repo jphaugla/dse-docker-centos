@@ -13,13 +13,24 @@ By default, this image will start DSE *in Cassandra only* mode. For example:
 
 To build the DataStax Docker image, run:
 ```console
-./dockerBuild.sh
+./dockerBuild.sh 5.1.9-1
 ```
 To build the Opscenter Docker image, run:
 ```console
 ./dockerOpsBuild.sh
 ```
 
+A standard run script is available for Opscenter and DSE.   Run the opscenter image first so the datastax opscenter agent can be automatically configured.
+
+Must pass the image name to the runDSE.sh script
+
+```console
+./runOps.sh 
+```
+
+```console
+./runDse.sh dsecent51
+```
 
 The image's entrypoint script runs the command `dse cassandra` and will append any switches you
 provide to that command. So it's possible to start DSE in any of the other supported modes by
@@ -130,11 +141,12 @@ docker logs dsecent1
 
 ## Builds
 
-Build and publish scripts are available in the `build` folder of the repository. All those 
-scripts are meant to be run from the root of the repository. For example:
+a build script is available
 
 ```console
 > dockerBuild.sh
 ```
 
 change the datastax.repo full to have your credentials to access the datastax repository
+ 
+See READMEUpgrade.md for upgrade information

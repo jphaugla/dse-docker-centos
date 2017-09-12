@@ -1,4 +1,7 @@
 FROM nimmis/java-centos:oracle-8-jdk
+# Get the version of DSE we're installing from the build argument
+ARG DSE_VERSION
+ENV DSE_VERSION ${DSE_VERSION}
 
 # Upgrading system
 RUN yum -y upgrade
@@ -9,8 +12,7 @@ RUN rpm --import https://rpm.datastax.com/rpm/repo_key && \
     chmod +x /usr/local/bin/gosu
     
 RUN yum -y  update && \
-    yum -y  install dse-full-5.1.2-1 && \
-    yum -y  install dse-demos && \
+    yum -y  install dse-full-$DSE_VERSION && \
     yum -y  install datastax-agent 
 
 # Volumes for Cassandra and Spark data
