@@ -65,25 +65,6 @@ nodetool sstableupgrade
 ##  so, it worked for 5.0.7 to 5.0.9 for example
 NOTE:   Can't have /usr as a Volume for this to work
 
-1. Have 3 images available dsecent48, dsecent50, and dsecent51
+I made this upgrade work using minor versions by using docker-compose.yaml to allow the existing files to be maintained in the volumes.  Don't do a "docker-compose down", instead do a second "docker-compose up -d" well existing is running and it will bring the container down and back up with the new image.  I have also seen notes that this can be accomplished with an "temporary container" but I have not tried this.  Here is a link to the temporary container technique:  https://stackoverflow.com/questions/26734402/how-to-upgrade-docker-container-after-its-image-changed
 
-2. Have dsecent1 and dsecent2 running from dsecent48, complete setup steps 1-4
-
-3. stop dsecent1
-```console
-docker stop dsecent1
-```
-4. start dsecent1 with the dsecent50 image
-```console
-docker stop dsecent1
-```
-
-
-
-
-
-
-
-
-
-
+Regardless of technique, this does not work well with major revisions and seems to have quite a few problems.  I also tried this with binary install method using Luke Tillmans image and it does not work with major revisions.
